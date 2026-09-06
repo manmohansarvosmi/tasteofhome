@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #FDFBF7;
+  --cream-secondary: #F5F1E9;
+  --brown: #3E2723;
+  --green: #1B5E20;
+  --green-hover: #144317;
+  --green-light: #E5EBDD;
+  --green-dark: #2D4B37;
+  --gold: #D4AF37;
+  --border-light: #E5E0D5;
+  --pattern-opacity: 0.05;
+}
+
+@theme {
+  --font-serif: "Libre Baskerville", "Playfair Display", Georgia, serif;
+  --font-marcellus: "Marcellus", serif;
+  --font-script: "Alex Brush", cursive;
+  --font-sans: "Inter", "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-cream-50: #FDFBF7;
+  --color-cream-100: #F5F1E9;
+  --color-cream-200: #EFEAE1;
+  --color-cream-300: #E5E0D5;
+  --color-cream-400: #D5CBBF;
+
+  --color-brand-brown: #3E2723;
+  --color-brand-brown-dark: #2A1A17;
+  --color-brand-brown-light: #5D4037;
+
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #E5C35E;
+  --color-brand-gold-dark: #B59020;
+
+  --color-brand-green: #1B5E20;
+  --color-brand-green-hover: #144317;
+  --color-brand-green-light: #E5EBDD;
+  --color-brand-green-dark: #2D4B37;
+}
+
+/* Warm Organic / Cultural SVG Pattern */
+.bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l2.3 8.3L40 10l-8.3 2.3L30 20l-2.3-8.3L20 10l8.3-2.3z' fill='%238B4513' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.indian-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l2.3 8.3L40 10l-8.3 2.3L30 20l-2.3-8.3L20 10l8.3-2.3z' fill='%238B4513' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.gold-border {
+  border: 1px solid var(--gold);
+}
+
+.shadow-soft {
+  box-shadow: 0 10px 30px rgba(62, 39, 35, 0.05);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #DFB75A 0%, #D4AF37 50%, #B59020 100%);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, #B59020 0%, #D4AF37 50%, #8C6A12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle pulse animation for WhatsApp button */
+@keyframes subtle-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 10px 25px -5px rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0), 0 14px 30px -5px rgba(37, 211, 102, 0.45);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 10px 25px -5px rgba(37, 211, 102, 0.3);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-subtle-pulse:hover {
+  animation-play-state: paused;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F1E9;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B59020;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Taste of Home – Homemade Food",
+  "description": "Authentic homemade Indian snacks, traditional sweets, pickles and festive gift hampers crafted with pure ingredients and hygienic care.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
