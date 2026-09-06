@@ -268,7 +268,7 @@ export const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-16 sm:space-y-24">
+    <div className="space-y-8 sm:space-y-12">
 
       {/* ===================================================================== */}
       {/* HERO — Professional Image Slider with Ken Burns + Crossfade            */}
@@ -304,100 +304,17 @@ export const HomePage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
             </motion.div>
           </AnimatePresence>
-
-          {/* Prev Arrow */}
-          <button
-            type="button"
-            onClick={prevSlide}
-            aria-label="Previous Slide"
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20
-              w-10 h-10 sm:w-12 sm:h-12 rounded-full
-              bg-white/20 hover:bg-white/90
-              text-white hover:text-[#3E2723]
-              shadow-lg border border-white/30
-              flex items-center justify-center
-              transition-all duration-300 hover:scale-110 active:scale-95
-              cursor-pointer backdrop-blur-md
-              opacity-0 group-hover/slider:opacity-100"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-
-          {/* Next Arrow */}
-          <button
-            type="button"
-            onClick={nextSlide}
-            aria-label="Next Slide"
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20
-              w-10 h-10 sm:w-12 sm:h-12 rounded-full
-              bg-white/20 hover:bg-white/90
-              text-white hover:text-[#3E2723]
-              shadow-lg border border-white/30
-              flex items-center justify-center
-              transition-all duration-300 hover:scale-110 active:scale-95
-              cursor-pointer backdrop-blur-md
-              opacity-0 group-hover/slider:opacity-100"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-
-          {/* Bottom Controls Bar */}
-          <div className="absolute bottom-0 left-0 right-0 z-20 px-4 sm:px-8 pb-4 pt-8
-            bg-gradient-to-t from-black/40 to-transparent
-            flex items-end justify-between gap-4">
-            <div className="flex items-center gap-2">
-              {SLIDES.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => goToSlide(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className="relative flex items-center cursor-pointer"
-                >
-                  <div className={`rounded-full transition-all duration-500 ${
-                    idx === currentSlide
-                      ? 'w-8 h-2 bg-white shadow-md'
-                      : 'w-2 h-2 bg-white/40 hover:bg-white/70'
-                  }`} />
-                </button>
-              ))}
-            </div>
-            <div className="text-white/80 text-xs font-bold tracking-widest select-none">
-              <span className="text-white text-sm font-extrabold">
-                {String(currentSlide + 1).padStart(2, '0')}
-              </span>
-              <span className="text-white/50 mx-1">/</span>
-              <span>{String(SLIDES.length).padStart(2, '0')}</span>
-            </div>
-          </div>
-
-          {/* Auto-slide Progress Bar */}
-          {!isPaused && (
-            <motion.div
-              key={`progress-${currentSlide}`}
-              className="absolute bottom-0 left-0 h-[3px] bg-[#D4AF37] z-30 origin-left"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 5, ease: 'linear' }}
-              style={{ width: '100%' }}
-            />
-          )}
         </div>
       </section>
-
-
-      {/* ===================================================================== */}
-      {/* BEST SELLERS                                                           */}
-      {/* ===================================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-baseline justify-between gap-2 mb-8">
+        <div className="flex flex-col sm:flex-row items-baseline justify-between gap-2 mb-5">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D4AF37] mb-1">
               <Flame className="w-4 h-4 text-orange-600" />
               <span>Customer Favorites</span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#3E2723]">Our Best Sellers</h2>
-            <p className="text-xs sm:text-sm text-[#5D4037] mt-1">
+            <p className="text-xs sm:text-sm text-[#5D4037] mt-0.5">
               Handpicked traditional favorites ordered on repeat by families.
             </p>
           </div>
@@ -410,32 +327,43 @@ export const HomePage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {bestSellers.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
 
+      {/* Marketing Thought Divider 1 */}
+      <div className="relative w-full flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="absolute inset-x-4 sm:inset-x-8 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+        <div className="relative z-10 px-4 py-1 bg-[#FAF6EE] border border-[#D4AF37] rounded-full flex items-center gap-2 text-xs font-serif font-bold text-[#800020] shadow-2xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span>"हर बाइट में माँ के हाथों का प्यार और शुद्ध देसी घी की महक"</span>
+          <span className="hidden sm:inline text-[#5D4037] font-sans font-medium text-[11px]">• 100% Homemade</span>
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+        </div>
+      </div>
+
       {/* ===================================================================== */}
       {/* SHOP BY CATEGORY — Premium Artisanal Cards                              */}
       {/* ===================================================================== */}
-      <section className="bg-gradient-to-b from-[#FAF6EE] via-[#F5F1E9] to-[#FAF6EE] py-16 sm:py-20 border-y border-[#E5E0D5]">
+      <section className="bg-gradient-to-b from-[#FAF6EE] via-[#F5F1E9] to-[#FAF6EE] py-8 sm:py-10 border-y border-[#E5E0D5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D4AF37]/50 text-xs font-bold text-[#800020] uppercase tracking-wider shadow-2xs">
+          <div className="text-center max-w-2xl mx-auto mb-7">
+            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white border border-[#D4AF37]/50 text-[11px] font-bold text-[#800020] uppercase tracking-wider shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Ghar Ka Swaad • Authentic Homemade</span>
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#3E2723] mt-2">
+            <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-[#3E2723] mt-1.5">
               Shop by Category
             </h2>
-            <p className="text-xs sm:text-sm text-[#5D4037] mt-2 font-medium">
+            <p className="text-xs sm:text-sm text-[#5D4037] mt-1 font-medium">
               Explore our handcrafted collection of traditional snacks, desi-ghee sweets, sun-cured pickles and festive hampers.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 items-stretch">
             {categories.map((cat) => (
               <div
                 key={cat.name}
@@ -495,6 +423,17 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Marketing Thought Divider 2 */}
+      <div className="relative w-full flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="absolute inset-x-4 sm:inset-x-8 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+        <div className="relative z-10 px-4 py-1 bg-[#FAF6EE] border border-[#D4AF37] rounded-full flex items-center gap-2 text-xs font-serif font-bold text-[#800020] shadow-2xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span>"नो प्रिजर्वेटिव, नो पाम ऑयल — सिर्फ शुद्धता और भरोसे का स्वाद"</span>
+          <span className="hidden sm:inline text-[#1B5E20] font-sans font-bold text-[11px]">• 100% Pure & Pious</span>
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+        </div>
+      </div>
+
       {/* ===================================================================== */}
       {/* INDIA IN EVERY JAR BANNER                                              */}
       {/* ===================================================================== */}
@@ -512,59 +451,126 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Marketing Thought Divider 3 */}
+      <div className="relative w-full flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="absolute inset-x-4 sm:inset-x-8 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+        <div className="relative z-10 px-4 py-1 bg-[#FAF6EE] border border-[#D4AF37] rounded-full flex items-center gap-2 text-xs font-serif font-bold text-[#800020] shadow-2xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span>"खानदानी नुस्खों से तैयार, जो बचपन के त्योहारों की याद दिला दे"</span>
+          <span className="hidden sm:inline text-[#5D4037] font-sans font-bold text-[11px]">• Generational Recipes</span>
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+        </div>
+      </div>
+
       {/* ===================================================================== */}
-      {/* WHY CHOOSE TASTE OF HOME                                               */}
+      {/* WHY CHOOSE TASTE OF HOME — Compact Royal Trust Strip                   */}
       {/* ===================================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#1B5E20]">Trust & Quality</span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#3E2723] mt-1">
-            Why Families Love Taste of Home
-          </h2>
-          <p className="text-xs sm:text-sm text-[#5D4037] mt-2">
-            We don't believe in mass factory production. Every snack is crafted with the same patience and integrity as homemade food made for loved ones.
-          </p>
+        {/* Compact Royal Motif Header */}
+        <div className="relative w-full flex items-center justify-center mb-6">
+          <div className="absolute inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+          <div className="relative z-10 px-5 py-1 bg-[#FAF6EE] border border-[#D4AF37] rounded-full flex items-center gap-2 text-xs sm:text-sm font-serif font-bold text-[#800020] shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <span>The Taste of Home Promise • परंपरा & शुद्धता</span>
+            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        {/* 4 Compact Trust Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {[
-            { icon: Heart, bg: 'bg-[#F5F1E9]', border: 'border-[#E5E0D5]', iconColor: 'text-[#D4AF37]', fill: true, title: 'Authentic Traditional Recipes', desc: 'Preserving authentic Bundelkhandi and Central Indian heirloom recipes handed down across four generations.' },
-            { icon: ShieldCheck, bg: 'bg-[#E5EBDD]', border: 'border-[#C8E6C9]', iconColor: 'text-[#1B5E20]', fill: false, title: 'Hygienic Preparation', desc: 'Prepared in clean artisanal kitchen spaces with hairnets, stainless-steel vessels and strict sanitary protocols.' },
-            { icon: Sparkles, bg: 'bg-[#F5F1E9]', border: 'border-[#E5E0D5]', iconColor: 'text-[#D4AF37]', fill: false, title: '100% Pure Ingredients', desc: 'Pure Cow Desi Ghee, cold-pressed Kachi Ghani mustard oil, rock salt (sendha namak) and zero artificial food colors.' },
-            { icon: Package, bg: 'bg-[#E5EBDD]', border: 'border-[#C8E6C9]', iconColor: 'text-[#1B5E20]', fill: false, title: 'Premium Packaging', desc: 'Delivered in multi-layered airtight moisture-proof packs and royal gift boxes ensuring crispness for months.' },
+            {
+              icon: Heart,
+              title: 'Authentic Heirlooms',
+              hindi: 'पारंपरिक खानदानी स्वाद',
+              desc: 'Generational recipes from Bundelkhand & Malwa',
+              color: 'text-[#800020]',
+              bg: 'bg-[#800020]/10',
+              border: 'border-[#800020]/20',
+            },
+            {
+              icon: Sparkles,
+              title: '100% Pure Ingredients',
+              hindi: 'शुद्ध देसी घी व कच्ची घानी',
+              desc: 'Pure Cow Desi Ghee & zero artificial colors',
+              color: 'text-[#D4AF37]',
+              bg: 'bg-[#D4AF37]/15',
+              border: 'border-[#D4AF37]/30',
+            },
+            {
+              icon: ShieldCheck,
+              title: 'Strict Kitchen Hygiene',
+              hindi: 'पवित्रता व सुरक्षा मानक',
+              desc: 'Artisanal kitchen with food-grade standards',
+              color: 'text-[#1B5E20]',
+              bg: 'bg-[#1B5E20]/10',
+              border: 'border-[#1B5E20]/20',
+            },
+            {
+              icon: Package,
+              title: 'Airtight Fresh Packaging',
+              hindi: 'क्रंची व सुरक्षित सील',
+              desc: 'Moisture-proof royal boxes for lasting crunch',
+              color: 'text-[#5D4037]',
+              bg: 'bg-[#5D4037]/10',
+              border: 'border-[#5D4037]/20',
+            },
           ].map((item, i) => (
-            <div key={i} className="p-6 rounded-2xl bg-white border border-[#E5E0D5] shadow-soft hover:shadow-md transition-all text-center">
-              <div className={`w-14 h-14 mx-auto rounded-2xl ${item.bg} border ${item.border} flex items-center justify-center ${item.iconColor} mb-4`}>
-                <item.icon className={`w-7 h-7 ${item.fill ? 'fill-[#D4AF37]' : ''}`} />
+            <div
+              key={i}
+              className="bg-white rounded-2xl p-3.5 sm:p-4 border border-[#E5E0D5] hover:border-[#D4AF37] shadow-2xs hover:shadow-md transition-all duration-300 flex items-center gap-3.5 hover:-translate-y-1"
+            >
+              <div className={`w-11 h-11 rounded-xl ${item.bg} border ${item.border} flex items-center justify-center shrink-0 shadow-2xs`}>
+                <item.icon className={`w-5 h-5 ${item.color}`} />
               </div>
-              <h4 className="font-serif font-bold text-base text-[#3E2723] mb-2">{item.title}</h4>
-              <p className="text-xs text-[#5D4037] leading-relaxed">{item.desc}</p>
+              <div className="min-w-0">
+                <div className="text-[10px] font-serif font-bold text-[#800020] truncate">
+                  {item.hindi}
+                </div>
+                <h4 className="font-serif font-bold text-xs sm:text-sm text-[#3E2723] leading-tight mt-0.5 truncate">
+                  {item.title}
+                </h4>
+                <p className="text-[11px] text-[#6D4C41] mt-0.5 leading-snug font-medium line-clamp-1">
+                  {item.desc}
+                </p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
+      {/* Marketing Thought Divider 4 */}
+      <div className="relative w-full flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="absolute inset-x-4 sm:inset-x-8 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+        <div className="relative z-10 px-4 py-1 bg-[#FAF6EE] border border-[#D4AF37] rounded-full flex items-center gap-2 text-xs font-serif font-bold text-[#800020] shadow-2xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span>"इस उत्सव, अपनों को दें शुद्धता और परंपरा का अनमोल उपहार"</span>
+          <span className="hidden sm:inline text-[#800020] font-sans font-bold text-[11px]">• Royal Keepsake Boxes</span>
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+        </div>
+      </div>
 
       {/* ===================================================================== */}
       {/* DIWALI GIFT HAMPERS                                                    */}
       {/* ===================================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F1E9] border border-[#D4AF37] text-xs font-bold text-[#3E2723] mb-2">
+        <div className="text-center max-w-2xl mx-auto mb-6">
+          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#F5F1E9] border border-[#D4AF37] text-[11px] font-bold text-[#3E2723] mb-1.5">
             <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>Festive Celebrations 2026</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#3E2723]">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#3E2723]">
             Is Diwali, Gift the Taste of Home <span className="text-red-500">❤️</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#5D4037] mt-2">
+          <p className="text-xs sm:text-sm text-[#5D4037] mt-1">
             Elevate your festive gifting with artisanal gold-embossed keepsake boxes filled with handcrafted sweets, crunchy namkeens, and festive brass diyas.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {hampers.map((hamper) => (
             <div
               key={hamper.id}
-              className="group bg-white rounded-[28px] border-2 border-[#E5E0D5] hover:border-[#D4AF37] shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
+              className="group bg-white rounded-3xl border border-[#E5E0D5] hover:border-[#D4AF37] shadow-soft hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
             >
               <div>
                 <div className="relative aspect-4/3 overflow-hidden bg-[#F5F1E9]">
@@ -575,35 +581,35 @@ export const HomePage: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {hamper.badge && (
-                    <span className="absolute top-3 left-3 px-3 py-1 text-[11px] font-bold uppercase rounded-full bg-[#D4AF37] text-white shadow-md">
+                    <span className="absolute top-3 left-3 px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full bg-[#D4AF37] text-white shadow-xs">
                       {hamper.badge}
                     </span>
                   )}
                 </div>
-                <div className="p-6">
-                  <h3 className="font-serif font-bold text-lg text-[#3E2723] group-hover:text-[#1B5E20] transition-colors">
+                <div className="p-4 sm:p-5">
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-[#3E2723] group-hover:text-[#1B5E20] transition-colors">
                     {hamper.name}
                   </h3>
-                  <p className="text-xs text-[#8C6D60] mt-1 line-clamp-2 font-medium">{hamper.tagline}</p>
-                  <div className="mt-4 pt-4 border-t border-[#E5E0D5] space-y-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C6D60] block mb-2">Hamper Contents:</span>
+                  <p className="text-xs text-[#8C6D60] mt-0.5 line-clamp-2 font-medium">{hamper.tagline}</p>
+                  <div className="mt-3 pt-3 border-t border-[#E5E0D5] space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C6D60] block mb-1">Hamper Contents:</span>
                     {hamper.contents.slice(0, 4).map((c, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-[#5D4037]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                      <div key={i} className="flex items-center gap-1.5 text-xs text-[#5D4037]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0" />
                         <span className="truncate">{c}</span>
                       </div>
                     ))}
                     {hamper.contents.length > 4 && (
-                      <span className="text-[11px] text-[#D4AF37] font-bold block pt-1">
+                      <span className="text-[10px] text-[#D4AF37] font-bold block pt-0.5">
                         + {hamper.contents.length - 4} more festive treats
                       </span>
                     )}
                   </div>
                 </div>
               </div>
-              <div className="p-6 pt-0 border-t border-[#E5E0D5]">
-                <div className="flex items-baseline gap-2 mb-4 pt-3">
-                  <span className="text-2xl font-extrabold text-[#1B5E20]">₹{hamper.price}</span>
+              <div className="p-4 sm:p-5 pt-0 border-t border-[#E5E0D5]">
+                <div className="flex items-baseline gap-2 mb-3 pt-2.5">
+                  <span className="text-xl sm:text-2xl font-extrabold text-[#1B5E20]">₹{hamper.price}</span>
                   <span className="text-xs text-[#8C6D60] line-through">MRP ₹{hamper.mrp}</span>
                   <span className="text-xs font-bold text-[#D4AF37]">
                     ({Math.round(((hamper.mrp - hamper.price) / hamper.mrp) * 100)}% OFF)
@@ -613,14 +619,14 @@ export const HomePage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => { setCurrentView('hampers'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                    className="w-full py-2.5 px-3 rounded-xl border border-[#3E2723] text-[#3E2723] hover:bg-[#3E2723] hover:text-white transition-colors text-xs font-bold cursor-pointer"
+                    className="w-full py-2 px-2.5 rounded-xl border border-[#3E2723] text-[#3E2723] hover:bg-[#3E2723] hover:text-white transition-colors text-xs font-bold cursor-pointer"
                   >
                     View Details
                   </button>
                   <button
                     type="button"
                     onClick={() => { setCurrentView('hampers'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                    className="w-full py-2.5 px-3 rounded-xl bg-[#D4AF37] hover:bg-[#A87B22] text-white transition-colors text-xs font-bold shadow-soft cursor-pointer"
+                    className="w-full py-2 px-2.5 rounded-xl bg-[#D4AF37] hover:bg-[#A87B22] text-white transition-colors text-xs font-bold shadow-soft cursor-pointer"
                   >
                     Gift Hamper
                   </button>
@@ -629,11 +635,11 @@ export const HomePage: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="text-center mt-10">
+        <div className="text-center mt-6">
           <button
             type="button"
             onClick={() => { setCurrentView('hampers'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="px-8 py-3.5 rounded-2xl bg-[#1B5E20] hover:bg-[#144317] text-white font-bold text-sm shadow-md transition-all active:scale-95 cursor-pointer inline-flex items-center gap-2"
+            className="px-6 py-2.5 rounded-xl bg-[#1B5E20] hover:bg-[#144317] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer inline-flex items-center gap-2"
           >
             <Gift className="w-4 h-4" />
             <span>Explore All Festive Gift Boxes</span>
@@ -641,55 +647,88 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Marketing Thought Divider 5 */}
+      <div className="relative w-full flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="absolute inset-x-4 sm:inset-x-8 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+        <div className="relative z-10 px-4 py-1 bg-[#FAF6EE] border border-[#D4AF37] rounded-full flex items-center gap-2 text-xs font-serif font-bold text-[#800020] shadow-2xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span>"12,000+ खुशहाल परिवारों की पहली पसंद — घर जैसा असली स्वाद"</span>
+          <span className="hidden sm:inline text-[#1B5E20] font-sans font-bold text-[11px]">• ★ 4.9 Rating</span>
+          <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+        </div>
+      </div>
+
       {/* ===================================================================== */}
-      {/* CUSTOMER REVIEWS                                                        */}
+      {/* CUSTOMER REVIEWS — Compact Royal Testimonials Strip                     */}
       {/* ===================================================================== */}
-      <section className="bg-[#F5F1E9] py-16 border-y border-[#E5E0D5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF37]">Real Verified Testimonials</span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#3E2723] mt-1">
-              Loved by Families <span className="text-red-500">❤️</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#5D4037] mt-2">
-              Discover what households across India say about our traditional homemade recipes.
-            </p>
+      <section className="bg-[#FAF6EE] py-8 sm:py-10 border-y border-[#E5E0D5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          
+          {/* Compact Royal Golden Motif Header */}
+          <div className="relative w-full flex items-center justify-center">
+            <div className="absolute inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+            <div className="relative z-10 px-5 py-1.5 bg-[#FAF6EE] border border-[#D4AF37] rounded-full flex items-center gap-2 text-xs sm:text-sm font-serif font-bold text-[#800020] shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>Loved by Families Across India ❤️</span>
+              <span className="text-[#8C6D60] font-sans font-medium text-[11px] hidden sm:inline">
+                (★ 4.9 • 12,000+ Happy Households)
+              </span>
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          {/* Compact Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 items-stretch">
             {reviews.slice(0, 3).map((review) => (
-              <div key={review.id} className="bg-white rounded-2xl p-6 border border-[#E5E0D5] shadow-soft flex flex-col justify-between">
+              <div
+                key={review.id}
+                className="bg-white rounded-2xl p-4 sm:p-4.5 border border-[#E5E0D5] hover:border-[#D4AF37] shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+              >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <div className="flex items-center gap-1 text-[#D4AF37]">
+                  {/* Top Bar: Author + Rating */}
+                  <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-[#E5E0D5]/60">
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-7 h-7 rounded-full text-white font-bold flex items-center justify-center text-xs font-serif shrink-0"
+                        style={{ backgroundColor: review.avatarColor || '#800020' }}
+                      >
+                        {review.customerName.charAt(0)}
+                      </div>
+                      <div>
+                        <h5 className="font-bold text-xs text-[#3E2723] leading-tight line-clamp-1">
+                          {review.customerName}
+                        </h5>
+                        <span className="text-[10px] text-[#8C6D60]">{review.location}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-0.5 text-[#D4AF37]">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#D4AF37]" />
+                        <Star key={i} className="w-3 h-3 fill-[#D4AF37]" />
                       ))}
                     </div>
-                    <span className="text-[11px] text-[#8C6D60]">{review.date}</span>
                   </div>
-                  <h4 className="font-serif font-bold text-sm text-[#3E2723] mb-2">"{review.title}"</h4>
-                  <p className="text-xs text-[#5D4037] leading-relaxed italic">"{review.comment}"</p>
+
+                  {/* Review Text */}
+                  <p className="text-xs text-[#5D4037] leading-relaxed line-clamp-3 italic">
+                    "{review.comment}"
+                  </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-[#E5E0D5] flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <div
-                      className="w-9 h-9 rounded-full text-white font-bold flex items-center justify-center text-xs shadow-soft"
-                      style={{ backgroundColor: review.avatarColor || '#1B5E20' }}
-                    >
-                      {review.customerName.charAt(0)}
-                    </div>
-                    <div>
-                      <h5 className="font-bold text-xs text-[#3E2723] leading-tight">{review.customerName}</h5>
-                      <p className="text-[10px] text-[#8C6D60]">{review.location}</p>
-                    </div>
+
+                {/* Bottom Product Badge */}
+                {review.productPurchased && (
+                  <div className="mt-2.5 pt-2 border-t border-[#E5E0D5]/50 flex items-center justify-between text-[10px]">
+                    <span className="text-[#800020] font-bold truncate max-w-[200px]">
+                      🛍️ {review.productPurchased}
+                    </span>
+                    <span className="text-[#1B5E20] font-semibold shrink-0">
+                      ✓ Verified
+                    </span>
                   </div>
-                  <span className="text-[10px] font-bold text-[#1B5E20] bg-[#E5EBDD] px-2 py-0.5 rounded-md">
-                    Verified Buyer
-                  </span>
-                </div>
+                )}
               </div>
             ))}
           </div>
+
         </div>
       </section>
 

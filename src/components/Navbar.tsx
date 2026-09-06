@@ -58,9 +58,9 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* --- TOP ANNOUNCEMENT BAR --- */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-[#E5E0D5] shadow-xs">
-        <div className="bg-[#3E2723] text-[#FDFBF7] text-xs py-2 px-4">
+      {/* --- TOP ANNOUNCEMENT BAR (ORIGINAL CLEAN DARK STYLE) --- */}
+      <header className="sticky top-0 z-40 shadow-sm">
+        <div className="bg-[#3E2723] text-[#FDFBF7] text-xs py-2 px-4 border-b border-[#D4AF37]/30">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 font-sans font-medium tracking-wide">
             <div className="flex items-center gap-2 text-center sm:text-left">
               <span className="flex h-2 w-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
@@ -93,48 +93,53 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* --- MAIN HEADER --- */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">
+        {/* --- MAIN UNIFIED LUXURY HERITAGE NAVBAR --- */}
+        <div className="bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#D4AF37]/40 shadow-xs transition-all">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16 sm:h-18">
             
             {/* Mobile Hamburger Menu Button */}
             <div className="flex items-center lg:hidden">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-full text-[#3E2723] hover:bg-[#F5F1E9] transition-colors"
+                className="p-2 rounded-xl text-[#3E2723] hover:bg-[#F5F1E9] border border-[#E5E0D5] transition-colors"
                 aria-label="Toggle menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 text-[#800020]" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
 
-            {/* BRAND LOGO */}
+            {/* BRAND LOGO — Clean, Natural & Prominent */}
             <div
               onClick={() => handleNavClick('home')}
-              className="cursor-pointer py-1.5 flex items-center group transition-transform duration-200 active:scale-95"
+              className="cursor-pointer py-1 flex items-center group transition-transform duration-200 active:scale-95"
             >
               <Logo size="md" variant="full" />
             </div>
 
-            {/* DESKTOP NAVIGATION LINKS */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium font-sans uppercase tracking-wider">
+            {/* DESKTOP NAVIGATION LINKS — Elegant, Clean & Royal */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-bold font-serif tracking-wider">
               {navLinks.map((link) => {
                 const isActive = currentView === link.view;
                 return (
                   <button
                     key={link.view}
                     onClick={() => handleNavClick(link.view)}
-                    className={`relative py-2 transition-all cursor-pointer ${
+                    className={`relative py-2 px-3 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
                       isActive
-                        ? 'text-[#1B5E20] font-bold border-b-2 border-[#1B5E20]'
-                        : 'text-[#3E2723] hover:text-[#1B5E20]'
+                        ? 'bg-[#800020] text-white shadow-xs'
+                        : 'text-[#3E2723] hover:text-[#800020] hover:bg-[#F5F1E9]/80'
                     }`}
                   >
                     <span>{link.label}</span>
                     {link.badge && (
-                      <span className="ml-1.5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-full bg-[#D4AF37] text-white shadow-2xs">
-                        {link.badge}
+                      <span className={`px-2 py-0.5 text-[9px] font-sans font-extrabold uppercase tracking-wider rounded-full shadow-2xs ${
+                        isActive
+                          ? 'bg-[#D4AF37] text-[#200A0C]'
+                          : 'bg-gradient-to-r from-[#D4AF37] to-[#B59020] text-white'
+                      }`}>
+                        ✨ {link.badge}
                       </span>
                     )}
                   </button>
@@ -148,33 +153,33 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="hidden md:flex items-center gap-2 px-3.5 py-1.5 bg-[#F5F1E9] hover:bg-[#EFEAE1] border border-[#E5E0D5] rounded-full text-xs font-sans text-[#5D4037] transition-colors cursor-pointer"
+                className="hidden md:flex items-center gap-2 px-3.5 py-1.5 bg-[#F5F1E9] hover:bg-[#EFEAE1] border border-[#E5E0D5] hover:border-[#D4AF37] rounded-full text-xs font-sans text-[#5D4037] transition-all shadow-2xs cursor-pointer"
                 aria-label="Search goodness"
               >
-                <Search className="w-3.5 h-3.5 text-[#1B5E20]" />
-                <span className="opacity-70">Search goodness...</span>
+                <Search className="w-3.5 h-3.5 text-[#800020]" />
+                <span className="opacity-75">Search goodness...</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="md:hidden p-2.5 rounded-full text-[#3E2723] hover:bg-[#F5F1E9] hover:text-[#1B5E20] transition-colors cursor-pointer"
+                className="md:hidden p-2 rounded-full text-[#3E2723] hover:bg-[#F5F1E9] transition-colors cursor-pointer"
                 aria-label="Search"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-4 h-4 text-[#3E2723]" />
               </button>
 
               {/* Wishlist Icon */}
               <button
                 type="button"
                 onClick={() => handleNavClick('shop')}
-                className="p-2.5 rounded-full text-[#3E2723] hover:bg-[#F5F1E9] hover:text-[#D4AF37] transition-colors cursor-pointer relative"
+                className="p-2 sm:p-2.5 rounded-full text-[#3E2723] hover:bg-[#F5F1E9] hover:text-[#800020] transition-colors cursor-pointer relative"
                 aria-label="Wishlist"
                 title={`${wishlistIds.length} items in Wishlist`}
               >
-                <Heart className={`w-5 h-5 ${wishlistIds.length > 0 ? 'fill-[#D4AF37] text-[#D4AF37]' : ''}`} />
+                <Heart className={`w-5 h-5 ${wishlistIds.length > 0 ? 'fill-[#800020] text-[#800020]' : ''}`} />
                 {wishlistIds.length > 0 && (
-                  <span className="absolute top-1 right-1 flex items-center justify-center w-4 h-4 text-[10px] font-bold text-white bg-[#D4AF37] rounded-full font-sans">
+                  <span className="absolute top-0.5 right-0.5 flex items-center justify-center w-4 h-4 text-[10px] font-bold text-white bg-[#800020] rounded-full font-sans shadow-2xs">
                     {wishlistIds.length}
                   </span>
                 )}
@@ -184,13 +189,13 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleNavClick('cart')}
-                className="flex items-center gap-2 pl-3.5 pr-4 py-2 rounded-full bg-[#1B5E20] text-white hover:bg-[#144317] transition-all shadow-soft active:scale-95 cursor-pointer ml-1 font-sans"
+                className="flex items-center gap-2 pl-3.5 pr-4 py-2 rounded-full bg-[#1B5E20] text-white hover:bg-[#144317] border border-[#D4AF37]/50 transition-all shadow-md active:scale-95 cursor-pointer ml-0.5 font-sans"
                 aria-label="Shopping Cart"
               >
                 <div className="relative">
-                  <ShoppingBag className="w-4.5 h-4.5" />
+                  <ShoppingBag className="w-4 h-4 text-[#FAF6EE]" />
                   {cartCount > 0 && (
-                    <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-[17px] h-[17px] px-1 text-[10px] font-bold text-[#1B5E20] bg-[#D4AF37] rounded-full border border-white">
+                    <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-[17px] h-[17px] px-1 text-[10px] font-bold text-[#1B5E20] bg-[#D4AF37] rounded-full border border-white shadow-2xs">
                       {cartCount}
                     </span>
                   )}
@@ -202,6 +207,10 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Delicate Golden Traditional Hairline at Bottom */}
+        <div className="h-[1.5px] w-full bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent" />
+      </div>
 
         {/* --- MOBILE NAVIGATION DRAWER --- */}
         {mobileMenuOpen && (

@@ -51,7 +51,10 @@ export const Footer: React.FC = () => {
           
           {/* Col 1: Brand & Bio (5 cols) */}
           <div className="md:col-span-5 space-y-3">
-            <div className="inline-block">
+            <div
+              onClick={() => navigateTo('home')}
+              className="inline-flex cursor-pointer py-1.5 px-4 rounded-[22px] bg-white border-2 border-[#D4AF37] shadow-sm hover:shadow-md transition-all active:scale-95"
+            >
               <Logo size="md" variant="full" />
             </div>
             <p className="text-[13px] sm:text-sm text-[#1F130E] leading-relaxed max-w-sm font-sans font-bold">
